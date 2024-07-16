@@ -1,0 +1,33 @@
+﻿@model List<InvoiceGenerator.Models.Request>
+
+@{
+    ViewData["Title"] = "Invoice List";
+}
+
+<h1>Invoice List</h1>
+
+<table class="table ">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Sales Person</th>
+            <th>Company Name</th>
+            <th>Invoice Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.order_id</td>
+                <td>@request.sales_person</td>
+                <td>@request.invoice_company_name</td>
+                <td>@request.order_confirmed_date.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@request.order_id" class="btn btn-primary">View Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,44 @@
+body {
+    color: #303030;
+}
+
+.navbar {
+    background-color: #1c1d32;
+    height: 56px;
+
+    .logo {
+        width: 50px;
+    } 
+    
+    .nav-link {
+        color: #fff;
+    }
+}
+
+
+.btn-primary {
+    background-color: #fff;
+    color: #333;
+    border-color: #8c8c8c;
+
+}
+
+.btn-primary:hover {
+    border-color: #adadad !important;
+    background-color: #e6e6e6 !important;
+    color: #333;
+}
+
+
+.request-address {
+    width: 30%;
+    border-collapse: collapse;
+    margin: 20px 0;
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+}
+
+

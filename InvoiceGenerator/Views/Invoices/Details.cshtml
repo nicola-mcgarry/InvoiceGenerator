@@ -1,0 +1,79 @@
+﻿@model InvoiceGenerator.Models.Request
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<div class="row d-flex justify-content-between ">
+    <div class="col-md-8">
+        <h1 class="mb-5">Order Details</h1>
+    </div>
+    <div class="col-md-4">
+        <a asp-action="GeneratePdf" asp-route-id="@Model.order_id" class="btn btn-primary">Download Invoice</a>
+    </div>
+</div>
+
+<div>
+    <table class="request-address">
+        <tr>
+            <td class="me-3">Order ID:</td>
+            <td>@Model.order_id</td>
+        </tr>
+        <tr>
+            <td class="me-3">Sales Person:</td>
+            <td>@Model.sales_person</td>
+        </tr>
+        <tr>
+            <td class="me-3">Company Name:</td>
+            <td>@Model.invoice_company_name</td>
+        </tr>
+        <tr>
+            <td class="me-3">Invoice Date:</td>
+            <td>@Model.order_confirmed_date.ToShortDateString()</td>
+        </tr>
+        <tr>
+            <td class="me-3">Contact Name:</td>
+            <td>@Model.invoice_contact_name</td>
+        </tr>
+        <tr>
+            <td class="me-3">Contact Email:</td>
+            <td>@Model.invoice_contact_email_address</td>
+        </tr>
+        <tr>
+            <td class="me-3">Special Instructions:</td>
+            <td>@Model.special_instructions</td>
+        </tr>
+        <tr>
+            <td class="me-3">Currency:</td>
+            <td>@Model.currency_name</td>
+        </tr>
+    </table>
+
+    <h3>Items</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Item</th>
+                <th>Month</th>
+                <th>Year</th>
+                <th>Gross Price</th>
+                <th>Net Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.items)
+            {
+                <tr>
+                    <td>@item.product_name</td>
+                    <td>@item.item</td>
+                    <td>@item.month_name</td>
+                    <td>@item.year</td>
+                    <td>@item.gross_price.ToString("C2")</td>
+                    <td>@item.net_price.ToString("C2")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
